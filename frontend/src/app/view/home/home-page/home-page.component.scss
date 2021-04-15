@@ -1,20 +1,37 @@
 div.container {
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
 
-  nav.home {
-    width: 100%;
+  div.home {
     height: 900px;
 
     background-image: url("./../../../../assets/images/home.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+
+    padding: 0;
+
+    div.content {
+      padding: 50vh 15vw;
+      color: white;
+      font-size: 2.5em;
+
+      button.btn-download-portifolio {
+        margin-top: 50px;
+        background-color: #8957FF;
+        border: none;
+        color: white;
+
+      }
+    }
   }
 
   div.overlay {
+    top: 0;
     position: absolute;
     width: 100%;
     height: 900px;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 1;
   }
 }
