@@ -2,3 +2,19 @@
   - Nesse arquivo estão os estilos e mudanças globais de estilos gerais;
   - In this file are the global styles and general style changes;
 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Quicksand-Regular';
+}
+
+.container {
+  width: 100%;
+  padding: 0 15vw 0 15vw;
+
+  .container-child {
+    width: 100%;
+    height: 100%;
+  }
+}

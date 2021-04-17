@@ -1,13 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url("./assets/config/_overrides.scss");
 @import url("./assets/style/fonts.scss");
 @import url("./assets/style/prime.scss");
 @import url("./assets/style/global.scss");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Quicksand-Regular';
-}

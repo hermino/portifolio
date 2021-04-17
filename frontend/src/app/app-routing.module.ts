@@ -4,7 +4,7 @@ import { AdminComponent } from './core/layout/admin/admin.component';
 
 const routes: Routes = [
   {
-    path: '', 
+    path: '',
     component: AdminComponent,
     // canActivate: []
     children: [
