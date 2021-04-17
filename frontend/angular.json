@@ -26,6 +26,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
+            "allowedCommonJsDependencies": [
+              "chalk"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -55,14 +58,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": { 
-                "scripts": true,
-                "styles": {
-                  "minify": true,
-                  "inlineCritical": true
-                },
-                "fonts": true
-              },
+              "optimization": false,
               "outputHashing": "all",
               "sourceMap": false,
               "namedChunks": false,

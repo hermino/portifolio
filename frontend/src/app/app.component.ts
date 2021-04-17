@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { Print } from './tools/print.tool';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+
+  public print = new Print();
+
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit() {
