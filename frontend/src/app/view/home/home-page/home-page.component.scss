@@ -1,44 +1,70 @@
-div.container {
-  // display: flex;
-  // flex-direction: column;
+// nav.navbar {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  div.home {
-    width: 100%;
-    height: 900px;
+//   width: 100%;
+//   height: 70px;
+//   margin-top: 150px;
 
-    background-image: url("./../../../../assets/images/home.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
+//   position: absolute;
+//   background-color: rgb(255, 255, 255, .5);
 
-    padding: 0;
+//   div.navbar-content ul {
+//     display: flex;
+//     justify-content: center;
+//     list-style: none;
 
-    div.content {
-      padding: 50vh 15vw;
+//     li {
+//       padding-left: 30px;
+//       padding-right: 30px;
+
+//       a {
+//         text-decoration: none;
+//         color: black;
+//         font-size: 1.2em;
+//       }
+//     }
+//   }
+// }
+
+section.container-home {
+  height: 100vh;
+  background-image: url("../../../../assets/images/home_overlay.png");
+  background-size: cover;
+
+  section.home {
+    background-color: transparent;
+    height: 100%;
+    padding-top: 33%;
+
+    div.home-content {
+      background-color: transparent;
+      margin: 0;
+      width: 100%;
+      height: auto;
       color: white;
-      font-size: 2.5em;
+
+      div.title {
+        padding: 0;
+        font-size: 4.2em;
+        margin: 0;
+      }
+
+      div.description {
+        padding: 0;
+        font-size: 2.2em;
+        font-family: 'Quicksand-Light' !important;
+      }
 
       button.btn-download-portifolio {
-        margin-top: 50px;
-        background-color: #8957FF;
+        width: 25%;
+        height: 50px;
         border: none;
-        color: white;
+        margin-top: 50px;
+        border-radius: 0;
+        background-color: rebeccapurple;
       }
     }
-
-    div.overlay {
-      top: 0;
-      position: absolute;
-      width: 100%;
-      height: 900px;
-      background-color: rgba(0, 0, 0, .6);
-      z-index: 1;
-    }
-  }
-
-  div.about {
-    width: 100%;
-    height: 900px;
-    background-color: blue;
-    color: black;
   }
 }

@@ -12,5 +12,5 @@ export class GlobalService<T> {
     public url: string
   ) {
     this.baseUrl = url;
-   }
+  }
 }

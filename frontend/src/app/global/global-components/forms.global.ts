@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Directive, Inject } from '@angular/core';
+import { Component, OnInit, Directive} from '@angular/core';
 import { GlobalService } from './../global-services/global.service';
 import { BaseModel } from './../../core/models/base.model';
 import { ActivatedRoute, Router } from '@angular/router';
