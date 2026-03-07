@@ -9,8 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class ThemeToggle implements OnInit {
   ngOnInit() {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+    const theme = savedTheme || 'dark';
     
     document.documentElement.setAttribute('data-theme', theme);
     this.updateButtonLabel(theme);

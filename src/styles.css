@@ -1,27 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap");
 
 /* ━━━━━━━━━━━━━━━━━━━━ DESIGN TOKENS ━━━━━━━━━━━━━━━━━━━━ */
 
-:root {
+/* Dark theme (default) */
+:root,
+[data-theme="dark"] {
   --bg:           #09090C;
   --bg-2:         #0F0F14;
   --bg-3:         #16161E;
   --bg-4:         #1C1C26;
   --text:         #E8E4D9;
-  --text-muted:   #6B6B7A;
-  --text-dim:     #30303E;
+  --text-muted:   #9898A8;
+  --text-dim:     #50505E;
   --accent:       #CAFF4D;
   --accent-dim:   rgba(202, 255, 77, 0.1);
   --accent-glow:  rgba(202, 255, 77, 0.05);
   --border:       #1E1E28;
   --border-2:     #28283A;
+  --hero-grid-opacity: 0.55;
+  --hero-glow-1:  rgba(202, 255, 77, 0.05);
+  --hero-glow-2:  rgba(202, 255, 77, 0.025);
+  --rule-gradient: linear-gradient(90deg, #CAFF4D, rgba(202, 255, 77, 0.15), transparent);
 
-  --font-display: 'Syne', sans-serif;
+  --font-display: 'Barlow Condensed', sans-serif;
   --font-body:    'DM Mono', monospace;
   --font-mono:    'DM Mono', monospace;
 
   --ease:         cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Light theme */
+[data-theme="light"] {
+  --bg:           #F6F4EF;
+  --bg-2:         #EDEAE3;
+  --bg-3:         #E4E1D9;
+  --bg-4:         #D8D5CC;
+  --text:         #0D0D10;
+  --text-muted:   #4C4C5A;
+  --text-dim:     #9898A8;
+  --accent:       #5A8A00;
+  --accent-dim:   rgba(90, 138, 0, 0.09);
+  --accent-glow:  rgba(90, 138, 0, 0.04);
+  --border:       #D8D5CC;
+  --border-2:     #C4C0B6;
+  --hero-grid-opacity: 0.35;
+  --hero-glow-1:  rgba(90, 138, 0, 0.05);
+  --hero-glow-2:  rgba(90, 138, 0, 0.025);
+  --rule-gradient: linear-gradient(90deg, #5A8A00, rgba(90, 138, 0, 0.15), transparent);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━ RESET ━━━━━━━━━━━━━━━━━━━━ */
@@ -112,11 +138,54 @@ p { margin: 0; }
   flex-shrink: 0;
 }
 
-/* ━━━━━━━━━━━━━━━━━━━━ THEME TOGGLE (hidden — dark-only design) ━━━━━━━━━━━━━━━━━━━━ */
+/* Phosphor Icons */
+i[class*="ph-"] {
+  font-size: 18px;
+  line-height: 1;
+  color: inherit;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn i[class*="ph-"] {
+  font-size: 16px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━ THEME TOGGLE ━━━━━━━━━━━━━━━━━━━━ */
 
 .theme-toggle {
-  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 300;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.25s var(--ease), color 0.25s var(--ease), background 0.25s var(--ease);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--bg-3);
+}
+
+.theme-toggle i[class*="ph-"] {
+  font-size: 17px;
+  pointer-events: none;
+}
+
+[data-theme="light"] .moon-icon { display: none; }
+[data-theme="dark"]  .sun-icon  { display: none; }
 
 /* ━━━━━━━━━━━━━━━━━━━━ HERO / HEADER ━━━━━━━━━━━━━━━━━━━━ */
 
@@ -125,7 +194,8 @@ p { margin: 0; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 3rem 4.5rem;
+  align-items: center;
+  padding: 0 0 4.5rem;
   position: relative;
   overflow: hidden;
   border-radius: 0;
@@ -148,9 +218,10 @@ p { margin: 0; }
     linear-gradient(90deg, var(--border) 1px, transparent 1px);
   background-size: 72px 72px;
   mask-image: radial-gradient(ellipse 75% 90% at 50% 60%, transparent 0%, black 100%);
-  opacity: 0.55;
+  opacity: var(--hero-grid-opacity);
   pointer-events: none;
   z-index: 0;
+  transition: opacity 0.4s var(--ease);
 }
 
 /* ambient glow */
@@ -159,8 +230,8 @@ p { margin: 0; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 55% 55% at 68% 28%, rgba(202, 255, 77, 0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 35% 40% at 15% 78%, rgba(202, 255, 77, 0.025) 0%, transparent 65%);
+    radial-gradient(ellipse 55% 55% at 68% 28%, var(--hero-glow-1) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 40% at 15% 78%, var(--hero-glow-2) 0%, transparent 65%);
   pointer-events: none;
   z-index: 0;
 }
@@ -248,6 +319,8 @@ p { margin: 0; }
   z-index: 1;
   display: flex;
   flex-direction: column;
+  max-width: 1340px;
+  width: 90vw;
 }
 
 .hero-intro {
@@ -272,9 +345,9 @@ p { margin: 0; }
 .header-content h1 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+  font-size: clamp(4.5rem, 11vw, 10rem);
   line-height: 0.88;
-  letter-spacing: -0.04em;
+  letter-spacing: 0.01em;
   color: var(--text);
   opacity: 0;
   animation: fadeUp 0.8s var(--ease-out) 0.35s forwards;
@@ -285,7 +358,7 @@ p { margin: 0; }
   content: '';
   display: block;
   height: 1px;
-  background: linear-gradient(90deg, var(--accent), rgba(202, 255, 77, 0.18), transparent);
+  background: var(--rule-gradient);
   width: 0;
   margin-top: 2rem;
   animation: ruleExpand 0.9s var(--ease-out) 1s forwards;
@@ -469,8 +542,8 @@ main#main-content {
 .section-header h2 {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  letter-spacing: -0.035em;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  letter-spacing: 0.02em;
   line-height: 0.95;
   color: var(--text);
 }
@@ -592,8 +665,8 @@ main#main-content {
   border-bottom: 1px solid var(--border);
 }
 
-/* project number in the left column cell */
-.project > *:first-child {
+/* all real children go to column 2; ::before (number) stays in col 1 */
+.project > * {
   grid-column: 2;
 }
 
@@ -675,8 +748,23 @@ main#main-content {
 }
 
 .project:hover .tech-badge {
-  border-color: rgba(202, 255, 77, 0.22);
-  color: rgba(202, 255, 77, 0.7);
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.experience .technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.5rem;
+}
+
+.experience .tech-badge:hover {
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  cursor: default;
 }
 
 .tech-badge.business {
@@ -949,7 +1037,11 @@ footer {
   }
 
   .site-hero {
-    padding: 0 1.5rem 3.5rem;
+    padding: 0 0 3.5rem;
+  }
+
+  .header-content {
+    width: 92vw;
   }
 
   .hero-metrics {
@@ -984,7 +1076,7 @@ footer {
 
 @media (max-width: 540px) {
   .site-hero {
-    padding: 0 1.25rem 3rem;
+    padding: 0 0 3rem;
   }
 
   .hero-actions {
