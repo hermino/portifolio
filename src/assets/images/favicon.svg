@@ -1,0 +1,18 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#0A0E27"/>
+
+  <!-- Terminal prompt symbol ">" with gradient -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF3366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00D9FF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Bold ">" terminal prompt -->
+  <path d="M 140 140 L 380 256 L 140 372 L 140 320 L 280 256 L 140 192 Z" fill="url(#gradient)"/>
+
+  <!-- Diagonal accent line -->
+  <rect x="360" y="140" width="12" height="232" fill="#FF3366" transform="rotate(15 366 256)"/>
+</svg>
