@@ -1,0 +1,22 @@
+<div class="admin-page">
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Contact Messages</h1>
+  </div>
+  <div class="admin-list">
+    @for (msg of messages(); track msg.id) {
+    <div class="admin-list__item" [class.admin-list__item--unread]="!msg.isRead">
+      <div class="admin-list__info">
+        <strong>{{ msg.name }}</strong>
+        <span>{{ msg.email }}</span>
+        <span class="admin-list__meta">{{ msg.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+        <p class="admin-list__message">{{ msg.message }}</p>
+      </div>
+      @if (!msg.isRead) {
+      <button class="admin-btn admin-btn--sm" (click)="markRead(msg.id)">Mark as read</button>
+      } @else {
+      <span class="admin-list__badge">Read</span>
+      }
+    </div>
+    }
+  </div>
+</div>

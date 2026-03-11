@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<app-theme-toggle></app-theme-toggle>
+<app-header></app-header>
+<main id="main-content">
+  <div class="col-main">
+    <app-about></app-about>
+    @defer (on viewport) {
+      <app-projects></app-projects>
+    } @placeholder {
+      <div></div>
+    }
+    @defer (on viewport) {
+      <app-experiences></app-experiences>
+    } @placeholder {
+      <div></div>
+    }
+  </div>
+  <aside class="col-side">
+    @defer (on viewport) {
+      <app-skills></app-skills>
+    } @placeholder {
+      <div></div>
+    }
+    @defer (on viewport) {
+      <app-contacts></app-contacts>
+    } @placeholder {
+      <div></div>
+    }
+  </aside>
+</main>
+<app-footer></app-footer>

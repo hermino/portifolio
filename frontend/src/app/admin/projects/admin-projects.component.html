@@ -1,0 +1,79 @@
+<div class="admin-page">
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Projects</h1>
+    <button class="admin-btn admin-btn--primary" (click)="openCreate()">+ Add</button>
+  </div>
+
+  @if (showForm()) {
+  <form class="admin-form" [formGroup]="form" (ngSubmit)="save()">
+    <h3 class="admin-form__title">{{ editing() ? 'Edit Project' : 'New Project' }}</h3>
+    <div class="admin-form__grid">
+      <div class="admin-field">
+        <label>Title<span class="admin-field__required">*</span></label>
+        <input formControlName="title" />
+        @if (form.get('title')?.invalid && form.get('title')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Client<span class="admin-field__required">*</span></label>
+        <input formControlName="client" />
+        @if (form.get('client')?.invalid && form.get('client')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Display Order</label>
+        <input type="number" formControlName="displayOrder" />
+      </div>
+      <div class="admin-field">
+        <label>Featured</label>
+        <input type="checkbox" formControlName="isFeatured" />
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Description<span class="admin-field__required">*</span></label>
+        <textarea rows="4" formControlName="description"></textarea>
+        @if (form.get('description')?.invalid && form.get('description')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Technologies <span class="admin-field__hint">(comma-separated)</span></label>
+        <input formControlName="technologies" placeholder="React, TypeScript, CSS3" />
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Categories <span class="admin-field__hint">(comma-separated)</span></label>
+        <input formControlName="categories" placeholder="web, ai, management" />
+      </div>
+      <div class="admin-field">
+        <label>GitHub URL</label>
+        <input formControlName="githubUrl" placeholder="https://github.com/..." />
+      </div>
+      <div class="admin-field">
+        <label>Live URL</label>
+        <input formControlName="liveUrl" placeholder="https://..." />
+      </div>
+    </div>
+    <div class="admin-form__actions">
+      <button type="submit" class="admin-btn admin-btn--primary">Save</button>
+      <button type="button" class="admin-btn" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  }
+
+  <div class="admin-list">
+    @for (proj of projects(); track proj.id) {
+    <div class="admin-list__item">
+      <div class="admin-list__info">
+        <strong>{{ proj.title }}</strong>
+        <span>{{ proj.client }}</span>
+        <span class="admin-list__meta">{{ proj.categories.join(', ') }}</span>
+      </div>
+      <div class="admin-list__actions">
+        <button class="admin-btn admin-btn--sm" (click)="openEdit(proj)">Edit</button>
+        <button class="admin-btn admin-btn--sm admin-btn--danger" (click)="delete(proj.id)">Delete</button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

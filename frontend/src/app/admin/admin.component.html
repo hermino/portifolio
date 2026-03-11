@@ -1,0 +1,21 @@
+<div class="admin">
+  <aside class="admin__sidebar">
+    <a class="admin__brand" href="/">&#8592; Portfolio</a>
+    <h2 class="admin__title">Admin</h2>
+    <nav class="admin__nav">
+      <a routerLink="experiences" routerLinkActive="active">Experiences</a>
+      <a routerLink="projects" routerLinkActive="active">Projects</a>
+      <a routerLink="skills" routerLinkActive="active">Skills</a>
+      <a routerLink="contacts" routerLinkActive="active">Contacts</a>
+    </nav>
+  </aside>
+  <main class="admin__content">
+    <router-outlet />
+  </main>
+</div>
+
+@if (toast.toast()) {
+<div class="admin-toast admin-toast--{{ toast.toast()!.type }}">
+  {{ toast.toast()!.message }}
+</div>
+}

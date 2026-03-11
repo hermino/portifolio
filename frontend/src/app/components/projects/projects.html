@@ -4,107 +4,29 @@
         <h2>Featured projects</h2>
     </div>
     <div class="project-grid">
-        <div class="project" data-category="ai web">
-            <h3 class="project__title">Automatic identification of fruits on scales</h3>
+        @for (proj of projects(); track proj.id) {
+        <div class="project" [attr.data-category]="proj.categories.join(' ')">
+            <h3 class="project__title">{{ proj.title }}</h3>
             <div>
-                <span class="tech-badge tech-badge--business">ITN</span>
+                <span class="tech-badge tech-badge--business">{{ proj.client }}</span>
             </div>
-            <p class="project__desc">
-                I developed the frontend interface for a web application that
-                automatically identifies fruit types on supermarket scales.
-                Built an intuitive Angular UI with Material Design, creating
-                responsive components for real-time image display and classification
-                results.
-            </p>
+            <p class="project__desc">{{ proj.description }}</p>
             <div class="project__techs">
-                <span class="tech-badge">Angular</span>
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Material Design</span>
-                <span class="tech-badge">Spring Boot</span>
-                <span class="tech-badge">PostgreSQL</span>
-                <span class="tech-badge">Python</span>
+                @for (tech of proj.technologies; track tech) {
+                <span class="tech-badge">{{ tech }}</span>
+                }
             </div>
+            @if (proj.githubUrl || proj.liveUrl) {
+            <div class="project__links">
+                @if (proj.githubUrl) {
+                <a class="project__link" [href]="proj.githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+                }
+                @if (proj.liveUrl) {
+                <a class="project__link" [href]="proj.liveUrl" target="_blank" rel="noopener noreferrer">Live</a>
+                }
+            </div>
+            }
         </div>
-        <div class="project" data-category="web management">
-            <h3 class="project__title">Performance Evaluation System</h3>
-            <div>
-                <span class="tech-badge tech-badge--business">ITN</span>
-            </div>
-            <p class="project__desc">
-                I built the frontend architecture for an employee performance evaluation
-                system using Angular and Material Design. Created complex form workflows,
-                data visualization dashboards, and responsive layouts to enhance the user
-                experience for HR processes.
-            </p>
-            <div class="project__techs">
-                <span class="tech-badge">Angular</span>
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Material Design</span>
-                <span class="tech-badge">C#</span>
-                <span class="tech-badge">ASP.NET</span>
-                <span class="tech-badge">SQLServer</span>
-            </div>
-        </div>
-        <div class="project" data-category="web management">
-            <h3 class="project__title">Service Order Management System</h3>
-            <div>
-                <span class="tech-badge tech-badge--business">ITN</span>
-            </div>
-            <p class="project__desc">
-                I developed the Angular frontend for a service order management system
-                in a bicycle manufacturing environment. Implemented dynamic forms,
-                real-time status tracking interfaces, and optimized component
-                architecture for production and maintenance workflows.
-            </p>
-            <div class="project__techs">
-                <span class="tech-badge">Angular</span>
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Material Design</span>
-                <span class="tech-badge">C#</span>
-                <span class="tech-badge">ASP.NET</span>
-                <span class="tech-badge">SQLServer</span>
-            </div>
-        </div>
-        <div class="project" data-category="web management">
-            <h3 class="project__title">System Based on Responsible Business Alliance (RBA) Patterns</h3>
-            <div>
-                <span class="tech-badge tech-badge--business">ITN</span>
-            </div>
-            <p class="project__desc">
-                The Responsible Business Alliance (RBA) is a code of conduct that
-                companies can adopt and require from their suppliers. I built the
-                frontend interface using Angular to create an intuitive platform for
-                evaluating and certifying supplier compliance. Designed complex
-                multi-step forms and interactive dashboards for assessment workflows.
-            </p>
-            <div class="project__techs">
-                <span class="tech-badge">Angular</span>
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Material Design</span>
-                <span class="tech-badge">C#</span>
-                <span class="tech-badge">ASP.NET</span>
-                <span class="tech-badge">SQLServer</span>
-            </div>
-        </div>
-        <div class="project" data-category="ai web">
-            <h3 class="project__title">Automatic license plate identification</h3>
-            <div>
-                <span class="tech-badge tech-badge--business">ITN</span>
-            </div>
-            <p class="project__desc">
-                I developed the Angular frontend for an automated license plate
-                recognition system. Created real-time monitoring interfaces, implemented
-                image display components with Material Design, and built responsive
-                dashboards for security and access control management.
-            </p>
-            <div class="project__techs">
-                <span class="tech-badge">Angular</span>
-                <span class="tech-badge">Node.js</span>
-                <span class="tech-badge">Material Design</span>
-                <span class="tech-badge">Spring Boot</span>
-                <span class="tech-badge">PostgreSQL</span>
-                <span class="tech-badge">Python</span>
-            </div>
-        </div>
+        }
     </div>
 </section>

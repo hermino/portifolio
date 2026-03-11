@@ -1,0 +1,74 @@
+<div class="admin-page">
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Experiences</h1>
+    <button class="admin-btn admin-btn--primary" (click)="openCreate()">+ Add</button>
+  </div>
+
+  @if (showForm()) {
+  <form class="admin-form" [formGroup]="form" (ngSubmit)="save()">
+    <h3 class="admin-form__title">{{ editing() ? 'Edit Experience' : 'New Experience' }}</h3>
+    <div class="admin-form__grid">
+      <div class="admin-field">
+        <label>Company<span class="admin-field__required">*</span></label>
+        <input formControlName="company" />
+        @if (form.get('company')?.invalid && form.get('company')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Role<span class="admin-field__required">*</span></label>
+        <input formControlName="role" />
+        @if (form.get('role')?.invalid && form.get('role')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Period<span class="admin-field__required">*</span></label>
+        <input formControlName="period" placeholder="e.g. 02/2022 – Present" />
+        @if (form.get('period')?.invalid && form.get('period')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Display Order</label>
+        <input type="number" formControlName="displayOrder" />
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Description<span class="admin-field__required">*</span></label>
+        <textarea rows="4" formControlName="description"></textarea>
+        @if (form.get('description')?.invalid && form.get('description')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Technologies <span class="admin-field__hint">(comma-separated)</span></label>
+        <input formControlName="technologies" placeholder="React, TypeScript, CSS3" />
+      </div>
+      <div class="admin-field admin-field--full">
+        <label>Activities <span class="admin-field__hint">(one per line)</span></label>
+        <textarea rows="4" formControlName="activities"></textarea>
+      </div>
+    </div>
+    <div class="admin-form__actions">
+      <button type="submit" class="admin-btn admin-btn--primary">Save</button>
+      <button type="button" class="admin-btn" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  }
+
+  <div class="admin-list">
+    @for (exp of experiences(); track exp.id) {
+    <div class="admin-list__item">
+      <div class="admin-list__info">
+        <strong>{{ exp.role }}</strong>
+        <span>{{ exp.company }}</span>
+        <span class="admin-list__meta">{{ exp.period }}</span>
+      </div>
+      <div class="admin-list__actions">
+        <button class="admin-btn admin-btn--sm" (click)="openEdit(exp)">Edit</button>
+        <button class="admin-btn admin-btn--sm admin-btn--danger" (click)="delete(exp.id)">Delete</button>
+      </div>
+    </div>
+    }
+  </div>
+</div>

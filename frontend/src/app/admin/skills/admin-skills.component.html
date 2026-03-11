@@ -1,0 +1,53 @@
+<div class="admin-page">
+  <div class="admin-page__header">
+    <h1 class="admin-page__title">Skills</h1>
+    <button class="admin-btn admin-btn--primary" (click)="openCreate()">+ Add</button>
+  </div>
+
+  @if (showForm()) {
+  <form class="admin-form" [formGroup]="form" (ngSubmit)="save()">
+    <h3 class="admin-form__title">{{ editing() ? 'Edit Skill' : 'New Skill' }}</h3>
+    <div class="admin-form__grid">
+      <div class="admin-field">
+        <label>Name<span class="admin-field__required">*</span></label>
+        <input formControlName="name" placeholder="e.g. TypeScript" />
+        @if (form.get('name')?.invalid && form.get('name')?.touched) {
+          <span class="admin-field__error">Required</span>
+        }
+      </div>
+      <div class="admin-field">
+        <label>Category<span class="admin-field__required">*</span></label>
+        <select formControlName="category">
+          @for (cat of categories; track cat) {
+          <option [value]="cat">{{ cat }}</option>
+          }
+        </select>
+      </div>
+      <div class="admin-field">
+        <label>Display Order</label>
+        <input type="number" formControlName="displayOrder" />
+      </div>
+    </div>
+    <div class="admin-form__actions">
+      <button type="submit" class="admin-btn admin-btn--primary">Save</button>
+      <button type="button" class="admin-btn" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+  }
+
+  <div class="admin-list">
+    @for (skill of skills(); track skill.id) {
+    <div class="admin-list__item">
+      <div class="admin-list__info">
+        <strong>{{ skill.name }}</strong>
+        <span>{{ skill.category }}</span>
+        <span class="admin-list__meta">Order: {{ skill.displayOrder }}</span>
+      </div>
+      <div class="admin-list__actions">
+        <button class="admin-btn admin-btn--sm" (click)="openEdit(skill)">Edit</button>
+        <button class="admin-btn admin-btn--sm admin-btn--danger" (click)="delete(skill.id)">Delete</button>
+      </div>
+    </div>
+    }
+  </div>
+</div>
