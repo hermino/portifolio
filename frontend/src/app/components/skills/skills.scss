@@ -1,0 +1,46 @@
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  scroll-margin-top: 7rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: transparent;
+  }
+
+  &__title {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+
+    .tech-badge {
+      font-size: 0.6rem;
+      background: var(--color-bg-muted);
+      border-color: var(--color-border);
+
+      &:hover {
+        background: var(--color-accent-dim);
+        border-color: var(--color-accent-border);
+        color: var(--color-accent);
+      }
+    }
+  }
+}

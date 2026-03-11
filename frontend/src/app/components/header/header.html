@@ -1,0 +1,75 @@
+<header class="site-hero" id="top">
+    <nav class="site-nav" #siteNav aria-label="Primary">
+        <a class="site-nav__logo" href="#top">HF</a>
+        <div class="site-nav__links">
+            <a href="#about"      [class.active]="activeSection() === 'about'">About</a>
+            <a href="#projects"   [class.active]="activeSection() === 'projects'">Projects</a>
+            <a href="#experience" [class.active]="activeSection() === 'experience'">Experience</a>
+            <a href="#skills"     [class.active]="activeSection() === 'skills'">Skills</a>
+            <a href="#contact"    [class.active]="activeSection() === 'contact'">Contact</a>
+        </div>
+        <a class="site-nav__cta" href="mailto:herminojunior@gmail.com">Let's talk</a>
+        <button
+            class="site-nav__hamburger"
+            #hamburgerRef
+            [class.site-nav__hamburger--open]="menuOpen()"
+            (click)="toggleMenu()"
+            [attr.aria-expanded]="menuOpen()"
+            aria-label="Toggle navigation menu"
+            aria-controls="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <div
+        class="mobile-menu"
+        id="mobile-menu"
+        #mobileMenuRef
+        [class.mobile-menu--open]="menuOpen()"
+        role="dialog"
+        aria-label="Navigation menu"
+        tabindex="-1">
+        <a href="#about"      (click)="closeMenu()">About</a>
+        <a href="#projects"   (click)="closeMenu()">Projects</a>
+        <a href="#experience" (click)="closeMenu()">Experience</a>
+        <a href="#skills"     (click)="closeMenu()">Skills</a>
+        <a href="#contact"    (click)="closeMenu()">Contact</a>
+        <a class="site-nav__cta" href="mailto:herminojunior@gmail.com" (click)="closeMenu()">Let's talk</a>
+    </div>
+
+    <section class="site-hero__content">
+        <div class="site-hero__intro">
+            <p class="site-hero__eyebrow">Frontend Developer • Angular • React</p>
+            <h1>Hermino Freitas</h1>
+            <p class="site-hero__tagline">Minimal, accessible interfaces with a product mindset.</p>
+        </div>
+        <p class="site-hero__summary">
+            I design and build responsive web experiences with a focus on clarity, performance,
+            and refined UI details. This portfolio highlights selected work, skills, and the
+            approach I bring to modern frontend teams.
+        </p>
+        <div class="site-hero__actions">
+            <a class="btn btn--primary" href="resources/curriculo.pdf" download>
+                <i class="ph-thin ph-download-simple" aria-hidden="true"></i>
+                Download CV
+            </a>
+            <a class="btn btn--ghost" href="#projects">View projects</a>
+        </div>
+        <div class="site-hero__metrics">
+            <div class="site-hero__metric">
+                <span class="site-hero__metric-value">5+ years</span>
+                <span class="site-hero__metric-label">Frontend experience</span>
+            </div>
+            <div class="site-hero__metric">
+                <span class="site-hero__metric-value">12+ products</span>
+                <span class="site-hero__metric-label">Delivered for clients</span>
+            </div>
+            <div class="site-hero__metric">
+                <span class="site-hero__metric-value">Design-first</span>
+                <span class="site-hero__metric-label">Accessible systems</span>
+            </div>
+        </div>
+    </section>
+</header>

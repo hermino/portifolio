@@ -1,0 +1,124 @@
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  scroll-margin-top: 7rem;
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: project-counter;
+}
+
+.projects.is-visible .project {
+  animation: cardReveal 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  @for $i from 1 through 5 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 0.1}s;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projects.is-visible .project {
+    animation: none;
+  }
+}
+
+.project {
+  counter-increment: project-counter;
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  column-gap: 1.5rem;
+  row-gap: 0.5rem;
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
+  cursor: default;
+  position: relative;
+  transition: padding-left var(--duration-medium) var(--ease-out);
+
+  &:last-child {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* all real children go to column 2; ::before (number) stays in col 1 */
+  & > * {
+    grid-column: 2;
+  }
+
+  /* project number */
+  &::before {
+    content: counter(project-counter, decimal-leading-zero);
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: var(--color-text-subtle);
+    padding-top: 0.25rem;
+    transition: color var(--duration-base) var(--ease);
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  /* vertical left accent bar */
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform var(--duration-medium) var(--ease-out);
+  }
+
+  &:hover {
+    padding-left: 0.75rem;
+
+    &::after {
+      transform: scaleY(1);
+    }
+
+    &::before {
+      color: var(--color-accent);
+    }
+
+    .tech-badge {
+      background: var(--color-accent-dim);
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.025em;
+    color: var(--color-text);
+    margin-bottom: 0.2rem;
+  }
+
+  &__desc {
+    font-size: 0.83rem;
+    color: var(--color-text-muted);
+    line-height: 1.75;
+  }
+
+  &__techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+}
