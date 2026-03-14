@@ -1,7 +1,13 @@
 <div class="admin-page">
   <div class="admin-page__header">
-    <h1 class="admin-page__title">Experiences</h1>
-    <button class="admin-btn admin-btn--primary" (click)="openCreate()">+ Add</button>
+    <h1 class="admin-page__title">
+      <i class="ph-thin ph-briefcase" aria-hidden="true"></i>
+      Experiences
+    </h1>
+    <button class="admin-btn admin-btn--primary" (click)="openCreate()">
+      <i class="ph-thin ph-plus" aria-hidden="true"></i>
+      Add
+    </button>
   </div>
 
   @if (showForm()) {
@@ -50,8 +56,14 @@
       </div>
     </div>
     <div class="admin-form__actions">
-      <button type="submit" class="admin-btn admin-btn--primary">Save</button>
-      <button type="button" class="admin-btn" (click)="cancel()">Cancel</button>
+      <button type="submit" class="admin-btn admin-btn--primary">
+        <i class="ph-thin ph-floppy-disk" aria-hidden="true"></i>
+        Save
+      </button>
+      <button type="button" class="admin-btn" (click)="cancel()">
+        <i class="ph-thin ph-x" aria-hidden="true"></i>
+        Cancel
+      </button>
     </div>
   </form>
   }
@@ -65,8 +77,14 @@
         <span class="admin-list__meta">{{ exp.period }}</span>
       </div>
       <div class="admin-list__actions">
-        <button class="admin-btn admin-btn--sm" (click)="openEdit(exp)">Edit</button>
-        <button class="admin-btn admin-btn--sm admin-btn--danger" (click)="delete(exp.id)">Delete</button>
+        <button class="admin-btn admin-btn--sm" (click)="openEdit(exp)">
+          <i class="ph-thin ph-pencil-simple" aria-hidden="true"></i>
+          Edit
+        </button>
+        <button class="admin-btn admin-btn--sm admin-btn--danger" (click)="delete(exp.id)">
+          <i class="ph-thin ph-trash" aria-hidden="true"></i>
+          Delete
+        </button>
       </div>
     </div>
     }

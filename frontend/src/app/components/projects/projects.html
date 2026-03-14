@@ -19,10 +19,16 @@
             @if (proj.githubUrl || proj.liveUrl) {
             <div class="project__links">
                 @if (proj.githubUrl) {
-                <a class="project__link" [href]="proj.githubUrl" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="project__link" [href]="proj.githubUrl" target="_blank" rel="noopener noreferrer">
+                    <i class="ph-thin ph-github-logo" aria-hidden="true"></i>
+                    GitHub
+                </a>
                 }
                 @if (proj.liveUrl) {
-                <a class="project__link" [href]="proj.liveUrl" target="_blank" rel="noopener noreferrer">Live</a>
+                <a class="project__link" [href]="proj.liveUrl" target="_blank" rel="noopener noreferrer">
+                    <i class="ph-thin ph-arrow-square-out" aria-hidden="true"></i>
+                    Live
+                </a>
                 }
             </div>
             }

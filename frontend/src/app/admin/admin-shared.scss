@@ -28,6 +28,9 @@
   color: var(--color-text);
   cursor: pointer;
   transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
 
   &:hover {
     border-color: var(--color-text-muted);
@@ -155,6 +158,9 @@
   letter-spacing: 0.05em;
   border: 1px solid;
   animation: toast-in 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 
   &--success {
     background: #1a2e1a;
@@ -242,6 +248,9 @@
   }
 
   &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;

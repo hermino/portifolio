@@ -1,6 +1,9 @@
 <div class="admin-page">
   <div class="admin-page__header">
-    <h1 class="admin-page__title">Contact Messages</h1>
+    <h1 class="admin-page__title">
+      <i class="ph-thin ph-chat-dots" aria-hidden="true"></i>
+      Contact Messages
+    </h1>
   </div>
   <div class="admin-list">
     @for (msg of messages(); track msg.id) {
@@ -12,9 +15,15 @@
         <p class="admin-list__message">{{ msg.message }}</p>
       </div>
       @if (!msg.isRead) {
-      <button class="admin-btn admin-btn--sm" (click)="markRead(msg.id)">Mark as read</button>
+      <button class="admin-btn admin-btn--sm" (click)="markRead(msg.id)">
+        <i class="ph-thin ph-check" aria-hidden="true"></i>
+        Mark as read
+      </button>
       } @else {
-      <span class="admin-list__badge">Read</span>
+      <span class="admin-list__badge">
+        <i class="ph-thin ph-check-circle" aria-hidden="true"></i>
+        Read
+      </span>
       }
     </div>
     }

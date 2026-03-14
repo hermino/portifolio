@@ -8,15 +8,26 @@
         <div class="experience__info">
             <div class="experience__role">
                 <h3 class="experience__title">{{ exp.role }}</h3>
-                <div class="experience__company">{{ exp.company }}</div>
+                <div class="experience__company">
+                    <i class="ph-thin ph-buildings" aria-hidden="true"></i>
+                    {{ exp.company }}
+                </div>
             </div>
-            <div><span class="experience__period">{{ exp.period }}</span></div>
+            <div>
+                <span class="experience__period">
+                    <i class="ph-thin ph-calendar-blank" aria-hidden="true"></i>
+                    {{ exp.period }}
+                </span>
+            </div>
         </div>
         <div class="experience__desc">
             <p>{{ exp.description }}</p>
             <div class="experience__activities">
                 @for (activity of exp.activities; track activity) {
-                <div class="experience__activity">{{ activity }}</div>
+                <div class="experience__activity">
+                    <i class="ph-thin ph-caret-right" aria-hidden="true"></i>
+                    {{ activity }}
+                </div>
                 }
             </div>
         </div>
