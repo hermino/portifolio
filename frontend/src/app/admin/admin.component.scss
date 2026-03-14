@@ -1,3 +1,5 @@
+@use './admin-shared' as *;
+
 .admin {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -26,7 +28,9 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
   text-decoration: none;
 
   &:hover {
@@ -49,7 +53,9 @@
   gap: 0.25rem;
 
   a {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     padding: 0.55rem 0.75rem;
     font-size: 0.7rem;
     text-transform: uppercase;
@@ -68,6 +74,27 @@
       border-left-color: var(--color-accent);
       background: var(--color-accent-dim);
     }
+  }
+}
+
+.admin__logout {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  font-family: var(--font-mono);
+
+  &:hover {
+    color: #ef4444;
   }
 }
 

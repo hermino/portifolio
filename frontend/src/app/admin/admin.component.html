@@ -1,13 +1,35 @@
 <div class="admin">
   <aside class="admin__sidebar">
-    <a class="admin__brand" href="/">&#8592; Portfolio</a>
-    <h2 class="admin__title">Admin</h2>
+    <a class="admin__brand" href="/">
+      <i class="ph-thin ph-arrow-left" aria-hidden="true"></i>
+      Portfolio
+    </a>
+    <h2 class="admin__title">
+      <i class="ph-thin ph-shield-check" aria-hidden="true"></i>
+      Admin
+    </h2>
     <nav class="admin__nav">
-      <a routerLink="experiences" routerLinkActive="active">Experiences</a>
-      <a routerLink="projects" routerLinkActive="active">Projects</a>
-      <a routerLink="skills" routerLinkActive="active">Skills</a>
-      <a routerLink="contacts" routerLinkActive="active">Contacts</a>
+      <a routerLink="experiences" routerLinkActive="active">
+        <i class="ph-thin ph-briefcase" aria-hidden="true"></i>
+        Experiences
+      </a>
+      <a routerLink="projects" routerLinkActive="active">
+        <i class="ph-thin ph-folder-open" aria-hidden="true"></i>
+        Projects
+      </a>
+      <a routerLink="skills" routerLinkActive="active">
+        <i class="ph-thin ph-wrench" aria-hidden="true"></i>
+        Skills
+      </a>
+      <a routerLink="contacts" routerLinkActive="active">
+        <i class="ph-thin ph-chat-dots" aria-hidden="true"></i>
+        Contacts
+      </a>
     </nav>
+    <button class="admin__logout" (click)="logout()">
+      <i class="ph-thin ph-sign-out" aria-hidden="true"></i>
+      Sair
+    </button>
   </aside>
   <main class="admin__content">
     <router-outlet />
@@ -16,6 +38,11 @@
 
 @if (toast.toast()) {
 <div class="admin-toast admin-toast--{{ toast.toast()!.type }}">
+  @if (toast.toast()!.type === 'success') {
+    <i class="ph-thin ph-check-circle" aria-hidden="true"></i>
+  } @else {
+    <i class="ph-thin ph-warning-circle" aria-hidden="true"></i>
+  }
   {{ toast.toast()!.message }}
 </div>
 }

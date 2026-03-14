@@ -1,10 +1,16 @@
 import { Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { authGuard } from '../guards/auth.guard';
 
 export const adminRoutes: Routes = [
   {
+    path: 'login',
+    loadComponent: () => import('./login/admin-login.component').then(m => m.AdminLoginComponent),
+  },
+  {
     path: '',
     component: AdminComponent,
+    canActivate: [authGuard],
     children: [
       { path: '', redirectTo: 'experiences', pathMatch: 'full' },
       { path: 'experiences', loadComponent: () => import('./experiences/admin-experiences.component').then(m => m.AdminExperiencesComponent) },
