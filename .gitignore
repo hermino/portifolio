@@ -50,3 +50,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 node_modules
+
+# Environment files — copy environment.example.ts to environment.ts and fill in your values
+frontend/src/environments/environment.ts
+frontend/src/environments/environment.prod.ts
