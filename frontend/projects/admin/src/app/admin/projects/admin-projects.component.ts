@@ -1,9 +1,9 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { ProjectApiService } from '../../services/api/project-api.service';
-import { Project } from '../../models/project.model';
-import { ToastService } from '../../services/toast.service';
+import { ProjectApiService } from '@shared/services/api/project-api.service';
+import { Project } from '@shared/models/project.model';
+import { ToastService } from '@shared/services/toast.service';
 
 @Component({
   selector: 'app-admin-projects',

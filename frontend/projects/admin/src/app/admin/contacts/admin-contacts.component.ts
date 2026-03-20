@@ -1,7 +1,7 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
-import { ContactApiService } from '../../services/api/contact-api.service';
-import { ContactMessage } from '../../models/contact-message.model';
+import { ContactApiService } from '@shared/services/api/contact-api.service';
+import { ContactMessage } from '@shared/models/contact-message.model';
 
 @Component({
   selector: 'app-admin-contacts',

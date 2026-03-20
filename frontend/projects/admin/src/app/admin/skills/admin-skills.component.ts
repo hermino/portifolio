@@ -1,9 +1,9 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { SkillApiService } from '../../services/api/skill-api.service';
-import { Skill } from '../../models/skill.model';
-import { ToastService } from '../../services/toast.service';
+import { SkillApiService } from '@shared/services/api/skill-api.service';
+import { Skill } from '@shared/models/skill.model';
+import { ToastService } from '@shared/services/toast.service';
 
 @Component({
   selector: 'app-admin-skills',

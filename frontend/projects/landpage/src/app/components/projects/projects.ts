@@ -1,8 +1,8 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProjectApiService } from '../../services/api/project-api.service';
-import { Project } from '../../models/project.model';
-import { ScrollReveal } from '../../directives/scroll-reveal.directive';
+import { ProjectApiService } from '@shared/services/api/project-api.service';
+import { Project } from '@shared/models/project.model';
+import { ScrollReveal } from '@shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-projects',

@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { ComponentFixture } from '@angular/core/testing';
 import { vi } from 'vitest';
 import { ThemeToggle } from './theme-toggle';
-import { ThemeService } from '../../services/theme.service';
+import { ThemeService } from '@shared/services/theme.service';
 
 describe('ThemeToggle', () => {
   let fixture: ComponentFixture<ThemeToggle>;

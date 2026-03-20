@@ -1,9 +1,9 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-import { ExperienceApiService } from '../../services/api/experience-api.service';
-import { Experience } from '../../models/experience.model';
-import { ToastService } from '../../services/toast.service';
+import { ExperienceApiService } from '@shared/services/api/experience-api.service';
+import { Experience } from '@shared/models/experience.model';
+import { ToastService } from '@shared/services/toast.service';
 
 @Component({
   selector: 'app-admin-experiences',

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { ScrollReveal } from '../../directives/scroll-reveal.directive';
+import { ScrollReveal } from '@shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-contacts',

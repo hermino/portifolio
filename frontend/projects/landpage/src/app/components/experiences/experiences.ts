@@ -1,8 +1,8 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExperienceApiService } from '../../services/api/experience-api.service';
-import { Experience } from '../../models/experience.model';
-import { ScrollReveal } from '../../directives/scroll-reveal.directive';
+import { ExperienceApiService } from '@shared/services/api/experience-api.service';
+import { Experience } from '@shared/models/experience.model';
+import { ScrollReveal } from '@shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-experiences',

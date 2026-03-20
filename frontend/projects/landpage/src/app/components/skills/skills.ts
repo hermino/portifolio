@@ -1,8 +1,8 @@
 import { Component, inject, signal, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SkillApiService } from '../../services/api/skill-api.service';
-import { SkillGroup } from '../../models/skill.model';
-import { ScrollReveal } from '../../directives/scroll-reveal.directive';
+import { SkillApiService } from '@shared/services/api/skill-api.service';
+import { SkillGroup } from '@shared/models/skill.model';
+import { ScrollReveal } from '@shared/directives/scroll-reveal.directive';
 
 @Component({
   selector: 'app-skills',
