@@ -10,9 +10,10 @@ export class AuthService {
 
   private session = signal<Session | null>(null);
   isAuthenticated = computed(() => !!this.session());
+  private initPromise: Promise<void>;
 
   constructor() {
-    this.supabase.auth.getSession().then(({ data }) => {
+    this.initPromise = this.supabase.auth.getSession().then(({ data }) => {
       this.session.set(data.session);
     });
 
@@ -21,14 +22,18 @@ export class AuthService {
     });
   }
 
+  waitForInit(): Promise<void> {
+    return this.initPromise;
+  }
+
   async signIn(email: string, password: string): Promise<void> {
     const { error } = await this.supabase.auth.signInWithPassword({ email, password });
     if (error) throw error;
-    await this.router.navigate(['/admin']);
+    await this.router.navigate(['/']);
   }
 
   async signOut(): Promise<void> {
     await this.supabase.auth.signOut();
-    await this.router.navigate(['/admin/login']);
+    await this.router.navigate(['/login']);
   }
 }
