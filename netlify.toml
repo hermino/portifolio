@@ -1,0 +1,19 @@
+[build]
+  base    = "frontend"
+  command = "npm run build && cp -r dist/admin/browser dist/hermino-portfolio-angular/browser/admin"
+  publish = "frontend/dist/hermino-portfolio-angular/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Admin SPA — must come before the catch-all
+[[redirects]]
+  from   = "/admin/*"
+  to     = "/admin/index.html"
+  status = 200
+
+# Landpage SPA catch-all
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200
