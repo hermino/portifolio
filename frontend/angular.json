@@ -14,6 +14,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/landpage",
             "browser": "projects/landpage/src/main.ts",
             "tsConfig": "projects/landpage/tsconfig.app.json",
             "assets": [{ "glob": "**/*", "input": "public" }],
@@ -55,6 +56,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "outputPath": "dist/admin",
             "browser": "projects/admin/src/main.ts",
             "tsConfig": "projects/admin/tsconfig.app.json",
             "assets": [{ "glob": "**/*", "input": "public" }],
