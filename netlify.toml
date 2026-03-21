@@ -1,7 +1,7 @@
 [build]
   base    = "frontend"
-  command = "npm run build && cp -r dist/admin/browser dist/hermino-portfolio-angular/browser/admin"
-  publish = "frontend/dist/hermino-portfolio-angular/browser"
+  command = "printf 'export const environment = { production: false, supabaseUrl: \"%s\", supabaseAnonKey: \"%s\" };' \"$SUPABASE_URL\" \"$SUPABASE_ANON_KEY\" > src/environments/environment.ts && printf 'export const environment = { production: true, supabaseUrl: \"%s\", supabaseAnonKey: \"%s\" };' \"$SUPABASE_URL\" \"$SUPABASE_ANON_KEY\" > src/environments/environment.prod.ts && npm run build && cp -r dist/admin/browser dist/hermino-portfolio-angular/browser/admin"
+  publish = "dist/hermino-portfolio-angular/browser"
 
 [build.environment]
   NODE_VERSION = "22"
